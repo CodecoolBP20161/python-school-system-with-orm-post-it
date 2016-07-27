@@ -16,4 +16,4 @@ def generator():
     password = ''.join(password)
     return password
 
-print(generator())
+#print(generator())

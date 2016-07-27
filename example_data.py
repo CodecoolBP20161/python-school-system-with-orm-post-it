@@ -21,13 +21,15 @@ for school in schools:
 applicants = [{
     'first_name': "Levente",
     'last_name': "Csanyi",
-    'application_code': application_code.generator,
+    'hometown': "Pecs",
+    'application_code': generator(),
     'status': 'new',
     'application_time': datetime.date(1988, 12, 1)},
     {
         'first_name': "Lvnt",
         'last_name': "Cny",
-        'application_code': random.randint(0,4555),
+        'hometown': "Pecs",
+        'application_code': generator(),
         'status': 'new',
         'application_time': datetime.date(1928, 12, 1)}
 ]
@@ -39,7 +41,7 @@ for applicant in applicants:
 city = [{'city': 'Budapest'}]
 
 for c in city:
-    ct = City(**city)
+    ct = City(**c)
     ct.save()
 
 

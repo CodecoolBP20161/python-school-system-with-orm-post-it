@@ -16,9 +16,10 @@ class BaseModel(Model):
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
+    hometown = CharField()
     application_code = CharField(null=False)
     status = CharField()
-    # closest_school = ForeignKeyField(School)
+    closest_school = ForeignKeyField(School)
     application_time = DateField()
 
 
