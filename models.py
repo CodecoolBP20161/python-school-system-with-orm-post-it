@@ -12,6 +12,9 @@ class BaseModel(Model):
     class Meta:
         database = db
 
+class School(BaseModel):
+    school = CharField()
+
 
 class Applicant(BaseModel):
     first_name = CharField()
@@ -24,11 +27,12 @@ class Applicant(BaseModel):
 
 
 
+
+
 class City(BaseModel):
     city = CharField()
-    # closest_school = ForeignKeyField(School)
+    closest_school = ForeignKeyField(School)
 
 
 
-class School(BaseModel):
-    school = CharField()
+

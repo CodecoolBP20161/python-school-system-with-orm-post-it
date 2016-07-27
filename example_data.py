@@ -24,6 +24,7 @@ applicants = [{
     'hometown': "Pecs",
     'application_code': generator(),
     'status': 'new',
+    'closest_school': 1,
     'application_time': datetime.date(1988, 12, 1)},
     {
         'first_name': "Lvnt",
@@ -31,6 +32,7 @@ applicants = [{
         'hometown': "Pecs",
         'application_code': generator(),
         'status': 'new',
+        'closest_school': 1,
         'application_time': datetime.date(1928, 12, 1)}
 ]
 
@@ -38,7 +40,7 @@ for applicant in applicants:
     a = Applicant(**applicant)
     a.save()
 
-city = [{'city': 'Budapest'}]
+city = [{'city': 'Budapest', 'closest_school': 1}]
 
 for c in city:
     ct = City(**c)
