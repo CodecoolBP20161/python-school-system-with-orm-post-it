@@ -2,6 +2,7 @@
 import random
 import datetime
 from models import *
+from application_code import generator
 
 
 # ccbudapest = School.create(school='Budapest school')
@@ -20,7 +21,7 @@ for school in schools:
 applicants = [{
     'first_name': "Levente",
     'last_name': "Csanyi",
-    'application_code': 'SCRD4',
+    'application_code': application_code.generator,
     'status': 'new',
     'application_time': datetime.date(1988, 12, 1)},
     {
@@ -34,6 +35,12 @@ applicants = [{
 for applicant in applicants:
     a = Applicant(**applicant)
     a.save()
-#
-# cities = [{'':}]
+
+city = [{'city': 'Budapest'}]
+
+for c in city:
+    ct = City(**city)
+    ct.save()
+
+
 

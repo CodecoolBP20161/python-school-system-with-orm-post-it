@@ -8,6 +8,7 @@ db = PostgresqlDatabase('krs', user='krs')
 
 class BaseModel(Model):
     """A base model that will use our Postgresql database"""
+
     class Meta:
         database = db
 
@@ -30,6 +31,3 @@ class City(BaseModel):
 
 class School(BaseModel):
     school = CharField()
-
-
-
