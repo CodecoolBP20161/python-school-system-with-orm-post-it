@@ -1,8 +1,10 @@
 import random
 
 
-letters = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-numerals = ("0123456789")
+letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+numerals = "0123456789"
+
+
 def generator():
     password = []
     while len(password) != 6:
@@ -16,4 +18,4 @@ def generator():
     password = ''.join(password)
     return password
 
-#print(generator())
+# print(generator())

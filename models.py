@@ -12,6 +12,7 @@ class BaseModel(Model):
     class Meta:
         database = db
 
+
 class School(BaseModel):
     school = CharField()
 
@@ -26,13 +27,6 @@ class Applicant(BaseModel):
     application_time = DateField()
 
 
-
-
-
 class City(BaseModel):
     city = CharField()
     closest_school = ForeignKeyField(School)
-
-
-
-
