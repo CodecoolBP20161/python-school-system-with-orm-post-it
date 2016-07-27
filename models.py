@@ -3,7 +3,8 @@ from peewee import *
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-db = PostgresqlDatabase('krs', user='krs')
+dbname = input("Please enter the database name and user (should be your username on your laptop): ")
+db = PostgresqlDatabase(dbname, user=dbname)
 
 
 class BaseModel(Model):
@@ -14,7 +15,12 @@ class BaseModel(Model):
 
 
 class School(BaseModel):
-    school = CharField()
+    school_name = CharField()
+
+
+class City(BaseModel):
+    city_name = CharField()
+    closest_school_id = ForeignKeyField(School)
 
 
 class Applicant(BaseModel):
@@ -26,7 +32,5 @@ class Applicant(BaseModel):
     closest_school = ForeignKeyField(School)
     application_time = DateField()
 
-
-class City(BaseModel):
-    city = CharField()
-    closest_school = ForeignKeyField(School)
+    def get_closest_school(self):
+        pass  # City.select(id).where(city_name == self.hometown)
