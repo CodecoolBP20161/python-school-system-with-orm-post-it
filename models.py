@@ -1,5 +1,6 @@
 from peewee import *
 from application_code import generator
+import random
 
 # Configure your database connection here
 # database name = should be your username on your laptop
@@ -50,24 +51,38 @@ class Applicant(BaseModel):
 
 # Story 2
 
-class Mentor:
+
+class Mentor(BaseModel):
     first_name = TextField()
     last_name = TextField()
     school = ForeignKeyField(School)
-    #available = DateField()
+    # available = DateField()
 
 
-class Interview:
+class Interview(BaseModel):
     mentor = ForeignKeyField(Mentor)
     applicant = ForeignKeyField(Applicant)
-    #interview_time = ForeignKeyField(InterviewSlot)
+    # interview_time = ForeignKeyField(InterviewSlot)
 
 
-class InterviewSlot:
-    interview_id = ForeignKeyField(Interview)
+    def make_interview(self):
+        print(
+        random.choice(InterviewSlot\
+        .select()\
+        .join(Mentor)\
+        .join(Applicant)\
+        .where(Mentor.school_id == self.closest_school_id and InterviewSlot.interview_id >> None)).slot)
+
+
+    @classmethod
+    def find_applicant_without_interview(cls):
+        for row in cls.select().join(Applicant, join_type=JOIN_LEFT_OUTER).where(cls.applicant >> None):
+            row.make_interview()
+            row.save()
+
+
+
+class InterviewSlot(BaseModel):
+    interview_id = ForeignKeyField(Interview, null=True)
     slot = DateTimeField()
     available_mentor = ForeignKeyField(Mentor)
-
-
-
-

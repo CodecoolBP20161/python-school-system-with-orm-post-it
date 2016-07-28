@@ -50,4 +50,26 @@ mentors = [{'first_name' : 'Tamas',
 
 for mentor in mentors:
     m = Mentor(**mentor)
-    m.save
+    m.save()
+
+slots = [{'interview_id': None,
+          'slot': datetime.datetime(2016, 8, 22, 13),
+          'available_mentor': 1},
+         {'interview_id': None,
+          'slot': datetime.datetime(2016, 8, 25, 17),
+          'available_mentor': 1},
+         {'interview_id': None,
+          'slot': datetime.datetime(2016, 8, 21, 13),
+          'available_mentor': 1},
+         {'interview_id': None,
+          'slot': datetime.datetime(2016, 8, 29, 13),
+          'available_mentor': 1}
+         ]
+
+for slot in slots:
+    s = InterviewSlot(**slot)
+    s.save()
+
+Applicant.assign_app_code()
+Applicant.school_to_applicant()
+Interview.find_applicant_without_interview()
