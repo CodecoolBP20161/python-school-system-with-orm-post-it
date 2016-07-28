@@ -28,7 +28,7 @@ for city in cities:
 applicants = [{'first_name': "Levente",
                'last_name': "Csanyi",
                'hometown': "Pecs",
-               'application_code': generator(),
+               'application_code': None,
                'status': 'new',
                'closest_school_id': None,
                'application_time': datetime.date(1988, 12, 1)
@@ -36,7 +36,7 @@ applicants = [{'first_name': "Levente",
               {'first_name': "Lvnt",
                'last_name': "Cny",
                'hometown': "Debrecen",
-               'application_code': generator(),
+               'application_code': None,
                'status': 'new',
                'closest_school_id': None,
                'application_time': datetime.date(1928, 12, 1)

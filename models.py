@@ -1,5 +1,5 @@
 from peewee import *
-from application_code import *
+from application_code import generator
 
 # Configure your database connection here
 # database name = should be your username on your laptop
@@ -37,3 +37,8 @@ class Applicant(BaseModel):
         # if self.closest_school is None:
         return City.select(City.closest_school_id).where(City.city_name == self.hometown)
 
+    @classmethod
+    def assign_app_code(cls):
+        for row in cls.select().where(cls.application_code >> None):
+            row.application_code = generator()
+            row.save()
