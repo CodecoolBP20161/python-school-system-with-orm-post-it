@@ -34,8 +34,13 @@ class Applicant(BaseModel):
     application_time = DateField()
 
     def get_closest_school_id(self):
-        # if self.closest_school is None:
         return City.select(City.closest_school_id).where(City.city_name == self.hometown)
+
+    @classmethod
+    def school_to_applicant(cls):
+        for row in cls.select().where(cls.closest_school >> None):
+            row.closest_school = row.get_closest_school_id()
+            row.save()
 
     @classmethod
     def assign_app_code(cls):
