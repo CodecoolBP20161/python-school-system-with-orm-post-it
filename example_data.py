@@ -42,3 +42,12 @@ applicants = [{'first_name': "Levente",
 for applicant in applicants:
     a = Applicant(**applicant)
     a.save()
+
+
+mentors = [{'first_name' : 'Tamas',
+            'last_name': 'Tompa',
+            'school' : '1'}]
+
+for mentor in mentors:
+    m = Mentor(**mentor)
+    m.save

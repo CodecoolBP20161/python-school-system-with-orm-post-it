@@ -47,3 +47,27 @@ class Applicant(BaseModel):
         for row in cls.select().where(cls.application_code >> None):
             row.application_code = generator()
             row.save()
+
+# Story 2
+
+class Mentor:
+    first_name = TextField()
+    last_name = TextField()
+    school = ForeignKeyField(School)
+    #available = DateField()
+
+
+class Interview:
+    mentor = ForeignKeyField(Mentor)
+    applicant = ForeignKeyField(Applicant)
+    #interview_time = ForeignKeyField(InterviewSlot)
+
+
+class InterviewSlot:
+    interview_id = ForeignKeyField(Interview)
+    slot = DateTimeField()
+    available_mentor = ForeignKeyField(Mentor)
+
+
+
+
