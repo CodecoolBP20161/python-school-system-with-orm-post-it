@@ -1,4 +1,5 @@
 from peewee import *
+from application_code import *
 
 # Configure your database connection here
 # database name = should be your username on your laptop
@@ -27,10 +28,12 @@ class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
     hometown = CharField()
-    application_code = CharField(null=False)
+    application_code = CharField(null=True)
     status = CharField()
-    closest_school = ForeignKeyField(School)
+    closest_school = ForeignKeyField(School, null=True)
     application_time = DateField()
 
-    def get_closest_school(self):
-        pass  # City.select(id).where(city_name == self.hometown)
+    def get_closest_school_id(self):
+        # if self.closest_school is None:
+        return City.select(City.closest_school_id).where(City.city_name == self.hometown)
+
