@@ -5,7 +5,7 @@ import random
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-dbname = input("Please enter the database name and user (should be your username on your laptop): ")
+dbname = 'krs'  # input("Please enter the database name and user (should be your username on your laptop): ")
 db = PostgresqlDatabase(dbname, user=dbname)
 
 
@@ -39,7 +39,8 @@ class Applicant(BaseModel):
 
     @classmethod
     def school_to_applicant(cls):
-        for row in cls.select().where(cls.closest_school >> None):
+        q = cls.select().where(cls.closest_school >> None).execute()
+        for row in q:
             row.closest_school = row.get_closest_school_id()
             row.save()
 
@@ -48,6 +49,11 @@ class Applicant(BaseModel):
         for row in cls.select().where(cls.application_code >> None):
             row.application_code = generator()
             row.save()
+
+    def make_interview(self):
+        print('hey')
+
+
 
 # Story 2
 
@@ -59,30 +65,33 @@ class Mentor(BaseModel):
     # available = DateField()
 
 
+# class Interview(BaseModel):
+#     mentor = ForeignKeyField(Mentor)
+#     applicant = ForeignKeyField(Applicant)
+#     # interview_time = ForeignKeyField(InterviewSlot)
+#
+#     @classmethod
+#     def find_applicant_without_interview(cls):
+#         q = Applicant.select().join(cls, join_type=JOIN_LEFT_OUTER).where(cls.applicant >> None).execute()
+#
+#         for row in q:
+#             # print(row.__dict__)
+#             row.make_interview()
+#             # row.save()
+
+
+
 class Interview(BaseModel):
-    mentor = ForeignKeyField(Mentor)
-    applicant = ForeignKeyField(Applicant)
-    # interview_time = ForeignKeyField(InterviewSlot)
-
-
-    def make_interview(self):
-        print(
-        random.choice(InterviewSlot\
-        .select()\
-        .join(Mentor)\
-        .join(Applicant)\
-        .where(Mentor.school_id == self.closest_school_id and InterviewSlot.interview_id >> None)).slot)
-
+    # interview_id = ForeignKeyField(Interview, null=True)
+    slot = DateTimeField()
+    available_mentor = ForeignKeyField(Mentor)
+    applicant_id = ForeignKeyField(Applicant, null=True)
 
     @classmethod
     def find_applicant_without_interview(cls):
-        for row in cls.select().join(Applicant, join_type=JOIN_LEFT_OUTER).where(cls.applicant >> None):
+        q = Applicant.select().join(cls, join_type=JOIN_LEFT_OUTER).where(cls.applicant_id >> None).execute()
+
+        for row in q:
+            # print(row.__dict__)
             row.make_interview()
-            row.save()
-
-
-
-class InterviewSlot(BaseModel):
-    interview_id = ForeignKeyField(Interview, null=True)
-    slot = DateTimeField()
-    available_mentor = ForeignKeyField(Mentor)
+            # row.save()

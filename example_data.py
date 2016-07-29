@@ -67,7 +67,7 @@ slots = [{'interview_id': None,
          ]
 
 for slot in slots:
-    s = InterviewSlot(**slot)
+    s = Interview(**slot)
     s.save()
 
 Applicant.assign_app_code()
