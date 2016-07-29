@@ -52,6 +52,22 @@ class Applicant(BaseModel):
 
     def make_interview(self):
         print('hey')
+        q = Mentor.select().join(Applicant, on=Mentor.school == Applicant.closest_school)\
+                .where(Applicant.id == self.id).execute()
+        for i in q:
+            print(q.__dict__)
+
+
+
+
+    @classmethod
+    def find_applicant_without_interview(cls):
+        q = cls.select().join(Interview, join_type=JOIN_LEFT_OUTER).where(Interview.applicant_id >> None).execute()
+
+        for row in q:
+            # print(row.__dict__)
+            row.make_interview()
+            # row.save()
 
 
 
@@ -87,11 +103,4 @@ class Interview(BaseModel):
     available_mentor = ForeignKeyField(Mentor)
     applicant_id = ForeignKeyField(Applicant, null=True)
 
-    @classmethod
-    def find_applicant_without_interview(cls):
-        q = Applicant.select().join(cls, join_type=JOIN_LEFT_OUTER).where(cls.applicant_id >> None).execute()
 
-        for row in q:
-            # print(row.__dict__)
-            row.make_interview()
-            # row.save()

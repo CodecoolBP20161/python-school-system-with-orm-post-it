@@ -21,16 +21,16 @@ for city in cities:
     c.save()
 
 
-applicants = [{'first_name': "Levente",
-               'last_name': "Csanyi",
+applicants = [{'first_name': "Jimi",
+               'last_name': "Hendrix",
                'hometown': "Pecs",
                'application_code': None,
                'status': 'new',
                'closest_school_id': None,
                'application_time': datetime.date(1988, 12, 1)
                },
-              {'first_name': "Lvnt",
-               'last_name': "Cny",
+              {'first_name': "Tom",
+               'last_name': "Araya",
                'hometown': "Debrecen",
                'application_code': None,
                'status': 'new',
@@ -46,7 +46,11 @@ for applicant in applicants:
 
 mentors = [{'first_name' : 'Tamas',
             'last_name': 'Tompa',
-            'school' : '1'}]
+            'school' : '1'},
+           {'first_name': 'Miskolci',
+            'last_name': 'Mentor',
+            'school': '2'}
+           ]
 
 for mentor in mentors:
     m = Mentor(**mentor)
@@ -72,4 +76,4 @@ for slot in slots:
 
 Applicant.assign_app_code()
 Applicant.school_to_applicant()
-Interview.find_applicant_without_interview()
+# Applicant.find_applicant_without_interview()
