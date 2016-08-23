@@ -20,7 +20,6 @@ cities = [{'city_name': 'Pecs', 'closest_school_id': 1},
           {'city_name': 'Budapest', 'closest_school_id': 1},
           {'city_name': 'Eger', 'closest_school_id': 2},
           {'city_name': 'Vac', 'closest_school_id': 1},
-          {'city_name': 'Debrecen', 'closest_school_id': 2},
           {'city_name': 'Hatvan', 'closest_school_id': 1},
           {'city_name': 'Krakko', 'closest_school_id': 3},
           {'city_name': 'Warsaw', 'closest_school_id': 3}
@@ -279,5 +278,5 @@ for slot in slots:
     s.save()
 
 Applicant.assign_app_code()
-# Applicant.school_to_applicant()
+Applicant.school_to_applicant()
 # Applicant.find_applicant_without_interview()

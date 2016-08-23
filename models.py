@@ -5,8 +5,8 @@ import random
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-dbname = 'tiborkiss'  # input("Please enter the database name and user (should be your username on your laptop): ")
-db = PostgresqlDatabase(dbname, user=dbname, password='TheTibi87', host='localhost')
+dbname = 'levente'  # input("Please enter the database name and user (should be your username on your laptop): ")
+db = PostgresqlDatabase(dbname, user=dbname)
 
 
 class BaseModel(Model):
@@ -58,8 +58,6 @@ class Applicant(BaseModel):
             print(q.__dict__)
 
 
-
-
     @classmethod
     def find_applicant_without_interview(cls):
         q = cls.select().join(Interview, join_type=JOIN_LEFT_OUTER).where(Interview.applicant_id >> None).execute()
@@ -79,8 +77,6 @@ class Mentor(BaseModel):
     last_name = TextField()
     school = ForeignKeyField(School)
     # available = DateField()
-
-
 
 
 class Interview(BaseModel):
