@@ -3,4 +3,4 @@ from models import *
 
 
 x = Applicant()
-print(x.school_to_applicant())
+print(x.assign_school())
