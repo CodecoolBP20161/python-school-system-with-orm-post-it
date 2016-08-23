@@ -49,6 +49,15 @@ mentors = [{'first_name' : 'Tamas',
             'school' : '1'},
            {'first_name': 'Miskolci',
             'last_name': 'Mentor',
+            'school': '2'},
+           {'first_name': 'Miskolci',
+            'last_name': 'Mentor',
+            'school': '2'},
+           {'first_name': 'Miskolci',
+            'last_name': 'Mentor',
+            'school': '2'},
+           {'first_name': 'Miskolci',
+            'last_name': 'Mentor',
             'school': '2'}
            ]
 
@@ -56,24 +65,46 @@ for mentor in mentors:
     m = Mentor(**mentor)
     m.save()
 
-slots = [{'interview_id': None,
-          'slot': datetime.datetime(2016, 8, 22, 13),
-          'available_mentor': 1},
-         {'interview_id': None,
-          'slot': datetime.datetime(2016, 8, 25, 17),
-          'available_mentor': 1},
-         {'interview_id': None,
-          'slot': datetime.datetime(2016, 8, 21, 13),
-          'available_mentor': 1},
-         {'interview_id': None,
-          'slot': datetime.datetime(2016, 8, 29, 13),
-          'available_mentor': 1}
+slots = [{'slot': datetime.datetime(2016, 8, 22, 13),
+          'mentor': 1,
+          'availability': True},
+         {'slot': datetime.datetime(2016, 8, 22, 13),
+          'mentor': 1,
+          'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+           'mentor': 1,
+           'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+            'mentor': 1,
+            'availability': True}, {'slot': datetime.datetime(2016, 8, 22, 13),
+             'mentor': 1,
+             'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+              'mentor': 1,
+              'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+               'mentor': 1,
+               'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                'mentor': 1,
+                'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                 'mentor': 1,
+                 'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                  'mentor': 1,
+                  'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                   'mentor': 1,
+                   'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                    'mentor': 1,
+                    'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                     'mentor': 1,
+                     'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                      'mentor': 1,
+                      'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                       'mentor': 1,
+                       'availability': True},{'slot': datetime.datetime(2016, 8, 22, 13),
+                        'mentor': 1,
+                        'availability': True}
          ]
 
 for slot in slots:
-    s = Interview(**slot)
+    s = InterviewSlot(**slot)
     s.save()
 
 Applicant.assign_app_code()
-Applicant.school_to_applicant()
+# Applicant.school_to_applicant()
 # Applicant.find_applicant_without_interview()
