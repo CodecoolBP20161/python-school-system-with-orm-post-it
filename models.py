@@ -5,8 +5,8 @@ import random
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-dbname = 'krs'  # input("Please enter the database name and user (should be your username on your laptop): ")
-db = PostgresqlDatabase(dbname, user=dbname)
+dbname = 'tiborkiss'  # input("Please enter the database name and user (should be your username on your laptop): ")
+db = PostgresqlDatabase(dbname, user=dbname, password='TheTibi87', host='localhost')
 
 
 class BaseModel(Model):
@@ -81,26 +81,19 @@ class Mentor(BaseModel):
     # available = DateField()
 
 
-# class Interview(BaseModel):
-#     mentor = ForeignKeyField(Mentor)
-#     applicant = ForeignKeyField(Applicant)
-#     # interview_time = ForeignKeyField(InterviewSlot)
-#
-#     @classmethod
-#     def find_applicant_without_interview(cls):
-#         q = Applicant.select().join(cls, join_type=JOIN_LEFT_OUTER).where(cls.applicant >> None).execute()
-#
-#         for row in q:
-#             # print(row.__dict__)
-#             row.make_interview()
-#             # row.save()
-
 
 
 class Interview(BaseModel):
-    # interview_id = ForeignKeyField(Interview, null=True)
     slot = DateTimeField()
-    available_mentor = ForeignKeyField(Mentor)
-    applicant_id = ForeignKeyField(Applicant, null=True)
+    applicant_id = ForeignKeyField(Applicant)
 
 
+class InterviewSlot(BaseModel):
+    slot = DateTimeField()
+    mentor = ForeignKeyField(Mentor)
+    availability = BooleanField()
+
+
+class MentorInterview(BaseModel):
+    mentor_id = ForeignKeyField(Mentor)
+    interview_id = ForeignKeyField(Interview)
