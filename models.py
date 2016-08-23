@@ -38,7 +38,7 @@ class Applicant(BaseModel):
         return City\
            .select(City.closest_school_id)\
            .join(Applicant, on=(Applicant.hometown == City.city_name))\
-           .where(City.city_name == self.hometown and Applicant.id == self.id)
+           .where(Applicant.id == self.id)
 
     @classmethod
     def assign_school(cls):
