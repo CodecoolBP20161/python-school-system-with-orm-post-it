@@ -5,7 +5,9 @@ import random
 # Configure your database connection here
 # database name = should be your username on your laptop
 # database user = should be your username on your laptop
-dbname = 'krs'  # input("Please enter the database name and user (should be your username on your laptop): ")
+
+with open('login.txt', 'r') as f:
+    dbname = f.readline().strip()
 db = PostgresqlDatabase(dbname, user=dbname)  # , password='TheTibi87', host='localhost')
 
 
