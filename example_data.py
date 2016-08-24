@@ -277,6 +277,18 @@ def fill_timeslot_ex():
               'availability': True},
              {'slot': datetime.datetime(2016, 8, 23, 13),
               'mentor': 3,
+              'availability': True},
+             {'slot': datetime.datetime(2016, 8, 22, 10),
+              'mentor': 2,
+              'availability': True},
+             {'slot': datetime.datetime(2016, 8, 22, 15),
+              'mentor': 2,
+              'availability': True},
+             {'slot': datetime.datetime(2016, 8, 22, 9),
+              'mentor': 2,
+              'availability': True},
+             {'slot': datetime.datetime(2016, 8, 24, 12),
+              'mentor': 2,
               'availability': True}
              ]
 
