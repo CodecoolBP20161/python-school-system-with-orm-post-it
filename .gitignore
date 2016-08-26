@@ -89,3 +89,5 @@ ENV/
 .ropeproject
 
 .idea
+
+login.txt
