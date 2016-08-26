@@ -13,4 +13,4 @@ example_data.fill_all_ex()
 Applicant.assign_app_code()
 Applicant.assign_school()
 Applicant.assign_interview()
-
+# Applicant.available_slot()

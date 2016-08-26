@@ -27,6 +27,19 @@ class City(BaseModel):
     closest_school_id = ForeignKeyField(School)
 
 
+class Mentor(BaseModel):
+    first_name = TextField()
+    last_name = TextField()
+    school = ForeignKeyField(School, related_name='mentors')
+    # available = DateField()
+
+
+class InterviewSlot(BaseModel):
+    slot = DateTimeField()
+    mentor = ForeignKeyField(Mentor, related_name='interview_slots')
+    free = BooleanField()
+
+
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
@@ -58,55 +71,49 @@ class Applicant(BaseModel):
 
     def available_slot(self):
         # fixme: should check only mentors from the same school
+        id_for_school = Mentor.select(Mentor.school).execute()
         available = InterviewSlot.select(InterviewSlot.slot
-        ).where(
-            InterviewSlot.free == True  # , self.closest_school == InterviewSlot.mentor
+        ).join(Mentor
+        ).where(InterviewSlot.free == True,
+                self.closest_school.id == Mentor.school
         ).group_by(
             InterviewSlot.slot
         ).having(
             fn.Count(InterviewSlot.mentor) > 1
         ).get()
+        print(self.closest_school.id)
         return available.slot
 
     @classmethod
     def assign_interview(cls):
-        students = cls.select(cls.id).join(
+        students = cls.select().join(
             Interview, join_type=JOIN_LEFT_OUTER
-        ).where(Interview.applicant_id >> None).execute()
+        ).where(Interview.applicant_id >> None)
 
         for row in students:
+            print(row.__dict__)
             # find a suitable interview slot
-            slot_to_reserve = Applicant.available_slot(row)
+            slot_to_reserve = row.available_slot()
             # update Interview table with slot and applicant
             new_interview = Interview.insert(slot=slot_to_reserve, applicant_id=row.id).execute()
             #
             av_mentors = InterviewSlot.select().where(InterviewSlot.slot == slot_to_reserve).limit(2).execute()
             for av_mentor in av_mentors:
-                InterviewSlot.update(free=False).where(InterviewSlot.mentor == 1).execute()
-                MentorInterview.insert(mentor_id=1, interview_id=new_interview).execute()
+                av_mentor.free = False
+                av_mentor.save()
+                MentorInterview.insert(mentor_id=av_mentor.mentor.id, interview_id=new_interview).execute()
             # Interview.create(slot=slot_to_reserve, applicant_id=row.id)
-            # todo: choose two mentors from the selected slot
 
 
 # Story 2
 
 
-class Mentor(BaseModel):
-    first_name = TextField()
-    last_name = TextField()
-    school = ForeignKeyField(School, related_name='mentors')
-    # available = DateField()
+
 
 
 class Interview(BaseModel):
     slot = DateTimeField()
     applicant_id = ForeignKeyField(Applicant, related_name='interview')
-
-
-class InterviewSlot(BaseModel):
-    slot = DateTimeField()
-    mentor = ForeignKeyField(Mentor, related_name='interview_slots')
-    free = BooleanField()
 
 
 class MentorInterview(BaseModel):
