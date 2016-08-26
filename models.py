@@ -1,14 +1,9 @@
 from peewee import *
 from application_code import generator
-import random
-
-# Configure your database connection here
-# database name = should be your username on your laptop
-# database user = should be your username on your laptop
 
 with open('login.txt', 'r') as f:
     dbname = f.readline().strip()
-db = PostgresqlDatabase(dbname, user=dbname)  # , password='TheTibi87', host='localhost')
+db = PostgresqlDatabase(dbname, user=dbname)
 
 
 class BaseModel(Model):
@@ -68,20 +63,19 @@ class Applicant(BaseModel):
             row.application_code = generator()
             row.save()
 
-
     def available_slot(self):
-        # fixme: should check only mentors from the same school
-        id_for_school = Mentor.select(Mentor.school).execute()
-        available = InterviewSlot.select(InterviewSlot.slot
-        ).join(Mentor
-        ).where(InterviewSlot.free == True,
-                self.closest_school.id == Mentor.school
+        available = InterviewSlot.select(
+            InterviewSlot.slot
+        ).join(
+            Mentor
+        ).where(
+            InterviewSlot.free == True,
+            self.closest_school.id == Mentor.school
         ).group_by(
             InterviewSlot.slot
         ).having(
             fn.Count(InterviewSlot.mentor) > 1
         ).get()
-        print(self.closest_school.id)
         return available.slot
 
     @classmethod
@@ -91,7 +85,6 @@ class Applicant(BaseModel):
         ).where(Interview.applicant_id >> None)
 
         for row in students:
-            print(row.__dict__)
             # find a suitable interview slot
             slot_to_reserve = row.available_slot()
             # update Interview table with slot and applicant
@@ -102,13 +95,6 @@ class Applicant(BaseModel):
                 av_mentor.free = False
                 av_mentor.save()
                 MentorInterview.insert(mentor_id=av_mentor.mentor.id, interview_id=new_interview).execute()
-            # Interview.create(slot=slot_to_reserve, applicant_id=row.id)
-
-
-# Story 2
-
-
-
 
 
 class Interview(BaseModel):
