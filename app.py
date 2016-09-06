@@ -1,6 +1,6 @@
 from flask import *
 from models import *
-from date import *
+from datetime import *
 
 
 app = Flask(__name__)
