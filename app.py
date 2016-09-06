@@ -20,11 +20,12 @@ def main_page():
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
     if request.method == 'POST':
-        Applicant.create(first_name = request.form["frist_name"], last_name= request.form["last_name"], hometown= request.form["hometown"], application_code= request.form["application_code"],
+        new_applicant = Applicant.create(first_name = request.form["first_name"], last_name= request.form["last_name"], hometown= request.form["hometown"], application_code= request.form["application_code"],
                             status= "In Progress", application_time = datetime.now())
-        return redirect(url_for('homepage'))
+        new_applicant.save()
+        return redirect(url_for('main_page'))
     else:
-        render_template('application_form.html')
+        return render_template('application_form.html')
 
 
 
