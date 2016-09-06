@@ -26,11 +26,13 @@ def registration():
         new_applicant.save()
         Applicant.assign_app_code()
         Applicant.assign_school()
-        return redirect(url_for('main_page'))
+        return redirect(url_for('suprise_boda'))
     else:
         return render_template('application_form.html')
 
-
+@app.route('/successful')
+def suprise_boda():
+    return render_template('supriseboda.html')
 
 
 if __name__ == '__main__':
