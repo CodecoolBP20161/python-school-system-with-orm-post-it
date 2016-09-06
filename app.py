@@ -1,14 +1,30 @@
-from flask import Flask
+from flask import *
 from models import *
+from date import *
+
 
 app = Flask(__name__)
 db.connect()
 
-@app.route('/')
-def starting_page():
-    q = Applicant.select(Applicant.first_name).get()
-    return q.first_name
 
+@app.route('/')
+def main_page():
+    return render_template('home_page.html')
+
+
+# @app.route('/applicants')
+# def app_list():
+#     applicants = Applicant.select()
+#     return render_template('VALAMI.HTML', applicants=applicants)
+
+@app.route('/registration', methods=['POST', 'GET'])
+def registration():
+    if request.method == 'POST':
+        Applicant.create(first_name = request.form["frist_name"], last_name= request.form["last_name"], hometown= request.form["hometown"], application_code= request.form["application_code"],
+                            status= "In Progress", application_time = datetime.now())
+        return redirect(url_for('homepage'))
+    else:
+        render_template('application_form.html')
 
 
 
@@ -16,7 +32,3 @@ def starting_page():
 if __name__ == '__main__':
     #create_tables()
     app.run(debug=True)
-
-
-
-
