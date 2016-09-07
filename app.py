@@ -41,6 +41,11 @@ def registration():
 #     return render_template('supriseboda.html')
 
 
+@app.route('/list/')
+def list_applicants():
+    applicants = Applicant.select()
+    return render_template('list.html', applicants=applicants)
+
 if __name__ == '__main__':
     # create_tables()
     app.run(debug=True)

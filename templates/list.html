@@ -8,30 +8,20 @@
 
     <h1 style="font-family:verdana;">Applicants </h1>
     <table border=3>
-        {% for story in userstories %}
+        {% for applicant in applicants %}
             <tr>
             <td>{{applicant.first_name}}</td>
             <td>{{applicant.last_name}}</td>
             <td>{{applicant.hometown}}</td>
             <td>{{applicant.application_code}}</td>
             <td>{{applicant.status}}</td>
-            <td>{{applicant.closest_school}}</td>
+            <td>{{applicant.closest_school.school_name}}</td>
             <td>{{applicant.application_time}}</td>
-            <td><a href="{{url_for('update_story', story_id=story.id)}}">Update</a></td>
-            <td><a href="{{url_for('delete_story', story_id=story.id)}}">delete</a></td>
             </tr>
         {% endfor %}
     </table>
 
-    <a href="{{url_for('/')}}">Home </a>
+    <a href="{{url_for('main_page')}}">Home </a>
 
 </body>
 </html>
-
-first_name = CharField()
-    last_name = CharField()
-    hometown = CharField()
-    application_code = CharField(null=True)
-    status = CharField()
-    closest_school = ForeignKeyField(School, null=True)
-    application_time = DateField()
