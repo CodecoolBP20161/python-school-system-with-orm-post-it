@@ -25,7 +25,7 @@ def registration():
             first_name=request.form["first_name"],
             last_name=request.form["last_name"],
             hometown=request.form["hometown"],
-            status=["In Progress"],
+            status="In Progress",
             application_time=datetime.now()
         )
         # flash("Registration Successful!")
@@ -41,10 +41,16 @@ def registration():
 #     return render_template('supriseboda.html')
 
 
-@app.route('/list/')
+@app.route('/list/', methods=['POST', 'GET'])
 def list_applicants():
-    applicants = Applicant.select()
-    return render_template('list.html', applicants=applicants)
+    if request.method == 'GET':
+        applicants = Applicant.select()
+        return render_template('list.html', applicants=applicants)
+    else:
+        filtered_applicants = Applicant.select().\
+            where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
+        return render_template('list.html', applicants=filtered_applicants)
+
 
 if __name__ == '__main__':
     # create_tables()
