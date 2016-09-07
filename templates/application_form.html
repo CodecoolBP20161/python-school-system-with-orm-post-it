@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Application</title>
+    <meta charset=iso-8858-2>
 </head>
 <body bgcolor="#E6E6FA">
     <h1>Registration Form</h1>
 
-    <form action="" method="post">
+    <form action="{{url_for('registration')}}" method="post">
 
     <p><label>First name</label></p>
-        <input type="text" name="first_name" required pattern="[A-Za-z]{1,10}" title="Enter your first name(without ekezet)">
+        <input type="text" name="first_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your first name">
     <p><label>Last name</label></p>
-        <input type="text" name="last_name" required pattern="[A-Za-z]{1,10}" title="Enter your last name(without ekezet)">
+        <input type="text" name="last_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your last name">
     <p><label>Hometown</label></p>
-        <input type="text" name="hometown" required pattern="[A-Za-z]{1,20}" title="Enter your hometown(without ekezet)">
+        <input type="text" name="hometown" required pattern="[charset=iso-8858-2]{1,20}" title="Enter your hometown">
     <p><label>E-mail</label></p>
         <input type="email" name="email" required title="Enter a valid email address!">
 
