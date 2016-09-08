@@ -39,6 +39,7 @@ class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
     hometown = CharField()
+    email = CharField(null=True, unique=False)
     application_code = CharField(null=True)
     status = CharField()
     closest_school = ForeignKeyField(School, null=True)

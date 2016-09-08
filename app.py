@@ -25,6 +25,7 @@ def registration():
             first_name=request.form["first_name"],
             last_name=request.form["last_name"],
             hometown=request.form["hometown"],
+            email=request.form["email"],
             status="In Progress",
             application_time=datetime.now()
         )
