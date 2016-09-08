@@ -22,8 +22,6 @@
     {% endfor %}
   </table>
 
-  <a href="{{url_for('main_page')}}">Home </a>
-
   <form action="{{url_for('list_applicants')}}", method="post">
     Show applicants whose
     <select name="filter_option">
@@ -42,6 +40,9 @@
   </form>
   <form action="/list/">
     <input type="submit" value="Default table" />
+  </form>
+  <form action="/">
+    <input type="submit" value="Home" />
   </form>
 </body>
 </html>
