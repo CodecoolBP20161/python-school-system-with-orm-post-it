@@ -4,7 +4,7 @@
 <head>
   <title> List of applicants</title>
 </head>
-<body>
+<body bgcolor="#E6E6FA">
 
   <h1 style="font-family:verdana;">Applicants </h1>
   <table border=3>
@@ -29,19 +29,19 @@
     <select name="filter_option">
       <option value=application_time>application time</option>
       <option value=hometown>hometown</option>
-      {#
-      <option value="??">school</option>
+      <option value=closest_school_id.school_name>school</option>
       <option value="??">interviewer mentor</option>
       <option value="first_name">first name</option>
       <option value="last_name">last name</option>
       <option value="third option">email address</option>
-      #}
     </select>
     is
     <input type=text name="search_string">
     <p><input type="submit" value="Show"></p>
 
   </form>
-
+  <form action="/list/">
+    <input type="submit" value="Default table" />
+  </form>
 </body>
 </html>
