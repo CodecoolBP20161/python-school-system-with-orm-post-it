@@ -56,6 +56,15 @@ def list_applicants():
                 where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
             return render_template('list.html', applicants=filtered_applicants)
 
+@app.before_request
+def before_req():
+    db.connect()
+
+
+@app.after_request
+def close_db(respond):
+    db.close()
+    return respond
 
 if __name__ == '__main__':
     # create_tables()
