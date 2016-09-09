@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title> List of applicants</title>
+</head>
+<body bgcolor="#E6E6FA">
+
+  <h1 style="font-family:verdana;">Applicants </h1>
+  <table border=3>
+    {% for applicant in applicants %}
+      <tr>
+      <td>{{applicant.first_name}}</td>
+      <td>{{applicant.last_name}}</td>
+      <td>{{applicant.hometown}}</td>
+      <td>{{applicant.email}}</td>
+      <td>{{applicant.application_code}}</td>
+      <td>{{applicant.status}}</td>
+      <td>{{applicant.closest_school.school_name}}</td>
+      <td>{{applicant.application_time}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <form action="{{url_for('list_applicants')}}", method="post">
+    Show applicants whose
+    <select name="filter_option">
+      <option value='application_time'>application time</option>
+      <option value='hometown'>hometown</option>
+      <option value='closest_school'>school</option>
+      <option value="??">interviewer mentor</option>
+      <option value="first_name">first name</option>
+      <option value="last_name">last name</option>
+      <option value="third option">email address</option>
+    </select>
+    is
+    <input type=text name="search_string">
+    <p><input type="submit" value="Show"></p>
+
+  </form>
+  <form action="/list/">
+    <input type="submit" value="Default table" />
+  </form>
+  <form action="/">
+    <input type="submit" value="Home" />
+  </form>
+</body>
+</html>
