@@ -51,9 +51,10 @@ def list_applicants():
         if request.form["filter_option"] == 'closest_school':
             x = Applicant.select().join(School).where(Applicant.closest_school == School.id).execute()
             return render_template('list.html', applicants=x)
-        filtered_applicants = Applicant.select().\
-            where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
-        return render_template('list.html', applicants=filtered_applicants)
+        else:
+            filtered_applicants = Applicant.select().\
+                where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
+            return render_template('list.html', applicants=filtered_applicants)
 
 
 if __name__ == '__main__':
