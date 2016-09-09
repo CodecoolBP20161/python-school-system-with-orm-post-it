@@ -49,7 +49,7 @@ def list_applicants():
         return render_template('list.html', applicants=applicants)
     else: # POST
         if request.form["filter_option"] == 'closest_school':
-            x = Applicant.select().join(School).where(Applicant.closest_school == School.id).execute()
+            x = Applicant.select().join(School).where(request.form["search_string"] == School.school_name).execute()
             return render_template('list.html', applicants=x)
         else:
             filtered_applicants = Applicant.select().\
