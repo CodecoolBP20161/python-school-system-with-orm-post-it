@@ -8,8 +8,18 @@ db.connect()
 
 
 @app.route('/')
-def main_page():
+def home_page():
     return render_template('home_page.html')
+
+
+@app.route('/applicant/login/')
+def applicant_login():
+    return "This will be the applicant login page -- UNDER CONSTRUCTION"
+
+
+@app.route('/applicant/profile/')
+def applicant_profile():
+    return "This will be the applicant profile page -- UNDER CONSTRUCTION"
 
 
 # @app.route('/applicants')
@@ -34,8 +44,7 @@ def registration():
         Applicant.assign_app_code()
         Applicant.assign_school()
         return render_template('supriseboda.html')
-    else:
-        return render_template('application_form.html')
+    return render_template('application_form.html')
 
 # @app.route('/successful/')
 # def suprise_boda():
@@ -47,14 +56,13 @@ def list_applicants():
     if request.method == 'GET':
         applicants = Applicant.select()
         return render_template('list.html', applicants=applicants)
-    else: # POST
-        if request.form["filter_option"] == 'closest_school':
-            x = Applicant.select().join(School).where(request.form["search_string"] == School.school_name).execute()
-            return render_template('list.html', applicants=x)
-        else:
-            filtered_applicants = Applicant.select().\
-                where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
-            return render_template('list.html', applicants=filtered_applicants)
+    if request.form["filter_option"] == 'closest_school':
+        x = Applicant.select().join(School).where(request.form["search_string"] == School.school_name).execute()
+        return render_template('list.html', applicants=x)
+    filtered_applicants = Applicant.select().\
+        where(getattr(Applicant, request.form["filter_option"]) == request.form["search_string"]).execute()
+    return render_template('list.html', applicants=filtered_applicants)
+
 
 @app.before_request
 def before_req():
