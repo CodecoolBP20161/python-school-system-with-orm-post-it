@@ -1,0 +1,104 @@
+body {
+    font-family: "Open Sans",sans-serif;
+    color: white;
+}
+.button {
+    background-color: #1d3c54;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+.button:hover {
+    background-color: #dd1818;
+    color: black;
+/*}
+.home-button {
+    width: 20%;
+    float: left;
+}
+.login-buttons {
+    width: 80%;
+    float: left;
+    text-align: right;*/
+}
+html {
+  background: url(http://www.walldevil.com/wallpapers/a11/background-backgrounds-abstract-advertisements-presentations-web-blue.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.footer {
+    position: bottom;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: grey;
+    text-align: left;
+}
+.position {
+    text-align: justify;
+    width: 50%;
+    margin: auto
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    border-right: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    text-decoration: none;
+
+}
+
+li:last-child {
+    border-right: none;
+
+}
+
+
+.active {
+    background-color: #4CAF50;
+}
+.slide1{
+  background-image: 'kitten.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide2{
+  background-image: 'kitten1.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide3{
+  background-image: 'kitten2.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel-caption h1{
+  font-size: 5.4em;
+  font-family: 'Pacifico', cursive;
+  padding-bottom: .4em;
+}
+.carousel-caption p{
+  font-size: 2em;
+}
