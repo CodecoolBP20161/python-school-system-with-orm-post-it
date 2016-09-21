@@ -15,6 +15,7 @@ def main_page():
     return render_template('home_page.html')
 
 
+
 @app.route('/applicant/login/', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -31,6 +32,12 @@ def login():
                 return "Invalid username/password combination"
     except:
         return "Wrong e-mail address, please sign up!"
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home_page'))
 
 
 @app.route('/registration/', methods=['POST', 'GET'])
