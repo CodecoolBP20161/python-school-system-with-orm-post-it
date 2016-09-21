@@ -1,5 +1,5 @@
 body {
-    background: url(http://www.walldevil.com/wallpapers/a11/background-backgrounds-abstract-advertisements-presentations-web-blue.jpg) no-repeat center center fixed;
+    background-color: #4f9ac4;
     font-family: "Open Sans",sans-serif;
     color: white;
 }
@@ -14,8 +14,9 @@ body {
     text-align: left;
 }
 .position {
+    font-size: 140%;
     text-align: justify;
-    width: 50%;
+    width: 70%;
     margin: auto
 }
 ul {
@@ -23,15 +24,16 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #fff;
 }
 li {
+    font-size: 150%;
     display: inline;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
-    border-right: 1px solid #bbb;
-    border-left: 1px solid #bbb;
+    /*border-right: 1px solid #bbb;
+    border-left: 1px solid #bbb;*/
     text-decoration: none;
 }
 
@@ -43,14 +45,14 @@ li:last-child {
     background-color: #000;
 }
 .slide1{
-  background-image: 'kitten.jpg';
+  background-image: 'cica.jpg';
   height: 500px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .slide2{
-  background-image: 'kitten1.jpg';
+  background-image: 'cica2.jpg';
   height: 500px;
   background-repeat: no-repeat;
   background-position: center;
@@ -64,11 +66,11 @@ li:last-child {
   background-size: cover;
 }
 .carousel-caption h1{
-  color: pink;
+  color: red;
   font-size: 5.4em;
   font-family: 'Pacifico', cursive;
   padding-bottom: .4em;
 }
 .carousel-caption p{
-  font-size: 5em;
+  font-size: 3.3em;
 }
