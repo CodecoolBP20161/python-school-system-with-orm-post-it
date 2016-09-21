@@ -1,45 +1,56 @@
 {% extends "base.html" %}
 {% block body %}
 
-<body>
+    <body>
 
-  <center><h1 style="font-family:verdana;">Applicants </h1>
-  <table border=3>
-    {% for applicant in applicants %}
-      <tr>
-      <td>{{applicant.first_name}}</td>
-      <td>{{applicant.last_name}}</td>
-      <td>{{applicant.hometown}}</td>
-      <td>{{applicant.email}}</td>
-      <td>{{applicant.application_code}}</td>
-      <td>{{applicant.status}}</td>
-      <td>{{applicant.closest_school.school_name}}</td>
-      <td>{{applicant.application_time}}</td>
-      </tr>
-    {% endfor %}
-  </table>
+    <center><h1><strong>Applicants</strong></h1>
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hometown</th>
+            <th>E-Mail</th>
+            <th>Application Code</th>
+            <th>Status</th>
+            <th>Closest School</th>
+            <th>Appl. Time</th>
+        </tr>
 
-  <form action="{{url_for('list_applicants')}}", method="post">
-    Show applicants whose
-    <select name="filter_option">
-      <option value='application_time'>application time</option>
-      <option value='hometown'>hometown</option>
-      <option value='closest_school'>school</option>
-      {#<option value="??">interviewer mentor</option>#}
-      <option value="first_name">first name</option>
-      <option value="last_name">last name</option>
-      <option value="email">email address</option>
-    </select>
-    is
-    <input type=text title="Please fill this field" required name="search_string">
-    <p><input type="submit" value="Show"></p>
+        {% for applicant in applicants %}
+          <tr>
+          <td>{{applicant.first_name}}</td>
+          <td>{{applicant.last_name}}</td>
+          <td>{{applicant.hometown}}</td>
+          <td>{{applicant.email}}</td>
+          <td>{{applicant.application_code}}</td>
+          <td>{{applicant.status}}</td>
+          <td>{{applicant.closest_school.school_name}}</td>
+          <td>{{applicant.application_time}}</td>
+          </tr>
+        {% endfor %}
+    </table>
 
-  </form>
-  <form action="/list/">
-    <input type="submit" value="Default table" />
-  </form>
-  <form action="/">
-    <input type="submit" value="Home" />
-</form></center>
+    <div class='dropdown'>
+    <form action="{{url_for('list_applicants')}}", method="post">
+        Show applicants whose
+            <select class='black' name="filter_option" >
+              <option value='application_time'>application time</option>
+              <option value='hometown'>hometown</option>
+              <option value='closest_school'>school</option>
+              {#<option value="??">interviewer mentor</option>#}
+              <option value="first_name">first name</option>
+              <option value="last_name">last name</option>
+              <option value="email">email address</option>
+            </select>
+        is
+        <input class="forms"type=text title="Please fill this field" required name="search_string"><br><br>
+        <p><strong><input type="submit" value="     Show      "></p></strong>
+    </div>
+
+    </form>
+    <form action="/list/">
+        <strong><input type="submit" value="Default table" /></strong>
+    </form></center>
 
 {% endblock %}

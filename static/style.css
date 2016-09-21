@@ -86,3 +86,6 @@ input[type=button], input[type=submit], input[type=reset] {
 .forms {
     color: black
 }
+.black {
+    color:#4f9ac4;
+}
