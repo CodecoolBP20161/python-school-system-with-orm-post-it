@@ -71,7 +71,7 @@ li:last-child {
 
 
 .active {
-    background-color: #4CAF50;
+    background-color: #000;
 }
 .slide1{
   background-image: 'kitten.jpg';
@@ -88,17 +88,18 @@ li:last-child {
   background-size: cover;
 }
 .slide3{
-  background-image: 'kitten2.jpg';
+  background-image: 'rosszabbcsontok.gif.jpg';
   height: 500px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .carousel-caption h1{
+  color: pink;
   font-size: 5.4em;
   font-family: 'Pacifico', cursive;
   padding-bottom: .4em;
 }
 .carousel-caption p{
-  font-size: 2em;
+  font-size: 5em;
 }
