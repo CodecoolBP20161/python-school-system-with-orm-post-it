@@ -3,33 +3,7 @@ body {
     font-family: "Open Sans",sans-serif;
     color: white;
 }
-.button {
-    background-color: #1d3c54;
-    border-radius: 8px;
-    color: white;
-    padding: 5px 5px;
-    text-decoration: none;
-    font-size: 16px;
-}
-.button:hover {
-    background-color: #dd1818;
-    color: black;
-/*}
-.home-button {
-    width: 20%;
-    float: left;
-}
-.login-buttons {
-    width: 80%;
-    float: left;
-    text-align: right;*/
-}
-/*html {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
+
 .footer {
     position: bottom;
     right: 0;
@@ -44,7 +18,6 @@ body {
     width: 50%;
     margin: auto
 }
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -52,7 +25,6 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
-
 li {
     display: inline;
     color: white;
@@ -61,14 +33,11 @@ li {
     border-right: 1px solid #bbb;
     border-left: 1px solid #bbb;
     text-decoration: none;
-
 }
 
 li:last-child {
     border-right: none;
-
 }
-
 
 .active {
     background-color: #000;
