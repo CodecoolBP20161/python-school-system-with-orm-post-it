@@ -1,12 +1,9 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body %}
 
-<html>
-<head>
-  <title> List of applicants</title>
-</head>
-<body bgcolor="#E6E6FA">
+<body>
 
-  <h1 style="font-family:verdana;">Applicants </h1>
+  <center><h1 style="font-family:verdana;">Applicants </h1>
   <table border=3>
     {% for applicant in applicants %}
       <tr>
@@ -43,6 +40,6 @@
   </form>
   <form action="/">
     <input type="submit" value="Home" />
-  </form>
-</body>
-</html>
+</form></center>
+
+{% endblock %}
