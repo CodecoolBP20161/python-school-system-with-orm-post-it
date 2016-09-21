@@ -1,0 +1,76 @@
+body {
+    background-color: #4f9ac4;
+    font-family: "Open Sans",sans-serif;
+    color: white;
+}
+
+.footer {
+    position: bottom;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: grey;
+    text-align: left;
+}
+.position {
+    font-size: 140%;
+    text-align: justify;
+    width: 70%;
+    margin: auto
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+li {
+    font-size: 150%;
+    display: inline;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    /*border-right: 1px solid #bbb;
+    border-left: 1px solid #bbb;*/
+    text-decoration: none;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+.active {
+    background-color: #000;
+}
+.slide1{
+  background-image: 'cica.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide2{
+  background-image: 'cica2.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide3{
+  background-image: 'rosszabbcsontok.gif.jpg';
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel-caption h1{
+  color: red;
+  font-size: 5.4em;
+  font-family: 'Pacifico', cursive;
+  padding-bottom: .4em;
+}
+.carousel-caption p{
+  font-size: 3.3em;
+}
