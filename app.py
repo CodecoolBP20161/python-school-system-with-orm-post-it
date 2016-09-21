@@ -3,29 +3,32 @@ from models import *
 from datetime import *
 
 
+
 app = Flask(__name__)
+app.secret_key = 'nfNWEOFKWEFMEFKm'
 db.connect()
 
 
 @app.route('/')
-def home_page():
-    return render_template('home_page.html')
+def main_page():
+    # return redirect(url_for('list_applicants'))
+    return render_template('login_page.html')
 
 
-@app.route('/applicant/login/')
-def applicant_login():
-    return "This will be the applicant login page -- UNDER CONSTRUCTION"
+@app.route('/login', methods=['POST'])
+def login():
+    try:
+        login_applicant = Applicant.get(Applicant.email == request.form["username"])
 
+        if login_applicant:
+            if request.form["application_code"] == login_applicant.application_code:
+                session['username'] = request.form['application_code']
+                return redirect(url_for('list_applicants'))
 
-@app.route('/applicant/profile/')
-def applicant_profile():
-    return "This will be the applicant profile page -- UNDER CONSTRUCTION"
-
-
-# @app.route('/applicants')
-# def app_list():
-#     applicants = Applicant.select()
-#     return render_template('VALAMI.HTML', applicants=applicants)
+            else:
+                return "Invalid username/password combination"
+    except:
+        return "Wrong e-mail address, please sign up!"
 
 
 @app.route('/registration/', methods=['POST', 'GET'])
@@ -49,6 +52,10 @@ def registration():
 # @app.route('/successful/')
 # def suprise_boda():
 #     return render_template('supriseboda.html')
+
+
+
+
 
 
 @app.route('/list/', methods=['POST', 'GET'])
