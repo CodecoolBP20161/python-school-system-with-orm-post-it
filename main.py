@@ -1,9 +1,10 @@
 from models import *
 import build
 import example_data
+from app import  *
 
 app.run()
-db.connect()
+# db.connect()
 
 # # for testing purposes drop and recreate the database
 # build.start_over_database()

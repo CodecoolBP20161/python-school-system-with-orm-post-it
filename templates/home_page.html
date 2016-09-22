@@ -1,27 +1,80 @@
-<!DOCTYPE html>
-<p lang="en">
-<head>
-    <meta charset=iso-8858-2>
-    <title>Home - School System</title>
-</head>
-<body bgcolor="#E6E6FA">
-<p align="middle"><img src="https://cdn.evbuc.com/eventlogos/31729335/logo.png" alt="Codecool"></p>
-    <p><h3 style="font-family:verdana;text-align:center;">Welcome to our amazing site!</h3></p>
-    <p><h4 style="font-family:verdana;text-align:center;">Please select a view!</h4></p>
-    <p><h1 style="text-align:center;">
-        <form action="/registration">
-        <input type="submit" value="Applicant" />
-        </form>
-    </h1></p>
-    <p><h1 style="text-align:center;">
-        <form action="http://google.com">
-        <input type="submit" disabled value="Mentor" />
-        </form>
-    </h1></p>
-    <p><h1 style="text-align:center;">
-        <form action="http://google.com">
-        <input type="submit" value="Administrator" />
-        </form>
-    </h1></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block body %}
+
+<body>
+    <div class='container'><br><br>
+
+    <div class="position">
+        <h1><center><strong>About Us</strong><center></h1><br>
+            <p>
+                A Codecool egy 18 hónapos, <strong>gyakorlatorientált</strong> képzés, aminek a végére garantáljuk, hogy állást is találunk neked.
+                És nem csak azért, mert <strong>20.000 programozó hiányzik</strong> a hazai piacról – nálunk tényleg a cégek számára is értékes,
+                munkakész fejlesztőként fogsz felállni az iskolapadból. A tandíjat pedig <strong>ráérsz</strong> majd az első
+                fizetéseidből <strong>törleszteni</strong>.
+            </p>
+    </div>
+    <center><img src="http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg" alt="Smiley face" width='50%' height='50%'></center><br><br>
+
+    <h1><center>So...</center></h1>
+    <h1><center>Why Us?</center></h1>
+
+    <div id='theCarousel' class='carousel' data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target='#theCarousel' data-slide-to='0' class="active"></li>
+            <li data-target='#theCarousel' data-slide-to='1'></li>
+            <li data-target='#theCarousel' data-slide-to='2'></li>
+        </ol>
+
+        <div class='carousel-inner'>
+            <div class='item active'>
+            <img src="static/cica.jpg" alt="cc" height="800" width="1400">
+            <div class='carousel-caption'>
+                <h1> +500 XP!</h1>
+                    <p> Even if you just register!</p>
+                    <p height='200' width='100'><a href='/' class='btn btn-primary btn-sm>'> So do it NOW</a></p>
+            </div>
+            </div>
+
+            <div class='item'>
+            <img src="static/cica2.jpg" alt="cc" height="800" width="1400">
+            <div class='carousel-caption'>
+                <h1> Free Beer!</h1>
+                    <p>Who would not have one?!</p>
+            </div>
+            </div>
+
+            <div class='item'>
+            <p><img src="static/rosszabbcsontok.gif" alt="cc" height="auto" width="auto">
+            <img src="static/rosszabbcsontok.gif" alt="cc" height="auto" width="auto">
+            <img src="static/rosszabbcsontok.gif" alt="cc" height="auto" width="auto"></p>
+            <div class='carousel-caption'>
+                <h1> And the Dalton Brothers</h1>
+            </div>
+            </div>
+        </div>
+
+            <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"> </span>
+            </a>
+            <a class="right carousel-control" href="#theCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+    </div><br>
+
+
+    <div class="position">
+        <h1><center><strong>Description</strong><center></h1>
+            <p> A <strong>Codecool</strong> egy nem hagyományos programozóképzés kezdőknek, a piac igényeire szabva.
+                Bár biztosítjuk a megfelelő elméleti hátteret, az oktatás erősen gyakorlatorientált, csak az „életben”
+                is hasznos tudásra koncentrálunk. Nálunk valódi, <strong>céges környezethez hasonló csapatmunka</strong> során sajátíthatsz
+                el egy olyan programozói szemléletmódot, ami az egész karrieredet megalapozza. Mindezt modern környezetben
+                és eszközökkel, <strong>jó hangulatban</strong>, tapasztalt mentorok által vezetett, válogatott csapatban. A képzés végére
+                azonnal és könnyen alkalmazható junior programozó leszel, aki egy fejlesztőcég életének bármelyik
+                részébe könnyen bekapcsolódik – és még segítünk is megtalálni az első munkahelyedet.
+            </p>
+    </div><br>
+
+
+    <center><img src='https://a2ua.com/kitten/kitten-015.jpg'></center><br>
+
+{% endblock %}

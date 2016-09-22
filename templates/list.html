@@ -1,37 +1,56 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body %}
 
-<html>
-<head>
-    <title> List of applicants</title>
-</head>
-<body>
+    <body>
 
-    <h1 style="font-family:verdana;">Applicants </h1>
-    <table border=3>
-        {% for story in userstories %}
-            <tr>
-            <td>{{applicant.first_name}}</td>
-            <td>{{applicant.last_name}}</td>
-            <td>{{applicant.hometown}}</td>
-            <td>{{applicant.application_code}}</td>
-            <td>{{applicant.status}}</td>
-            <td>{{applicant.closest_school}}</td>
-            <td>{{applicant.application_time}}</td>
-            <td><a href="{{url_for('update_story', story_id=story.id)}}">Update</a></td>
-            <td><a href="{{url_for('delete_story', story_id=story.id)}}">delete</a></td>
-            </tr>
+    <center><h1><strong>Applicants</strong></h1>
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hometown</th>
+            <th>E-Mail</th>
+            <th>Application Code</th>
+            <th>Status</th>
+            <th>Closest School</th>
+            <th>Appl. Time</th>
+        </tr>
+
+        {% for applicant in applicants %}
+          <tr>
+          <td>{{applicant.first_name}}</td>
+          <td>{{applicant.last_name}}</td>
+          <td>{{applicant.hometown}}</td>
+          <td>{{applicant.email}}</td>
+          <td>{{applicant.application_code}}</td>
+          <td>{{applicant.status}}</td>
+          <td>{{applicant.closest_school.school_name}}</td>
+          <td>{{applicant.application_time}}</td>
+          </tr>
         {% endfor %}
     </table>
 
-    <a href="{{url_for('/')}}">Home </a>
+    <div class='dropdown'>
+    <form action="{{url_for('list_applicants')}}", method="post">
+        Show applicants whose
+            <select class='black' name="filter_option" >
+              <option value='application_time'>application time</option>
+              <option value='hometown'>hometown</option>
+              <option value='closest_school'>school</option>
+              {#<option value="??">interviewer mentor</option>#}
+              <option value="first_name">first name</option>
+              <option value="last_name">last name</option>
+              <option value="email">email address</option>
+            </select>
+        is
+        <input class="forms"type=text title="Please fill this field" required name="search_string"><br><br>
+        <p><strong><input type="submit" value="     Show      "></p></strong>
+    </div>
 
-</body>
-</html>
+    </form>
+    <form action="/list/">
+        <strong><input type="submit" value="Default table" /></strong>
+    </form></center>
 
-first_name = CharField()
-    last_name = CharField()
-    hometown = CharField()
-    application_code = CharField(null=True)
-    status = CharField()
-    closest_school = ForeignKeyField(School, null=True)
-    application_time = DateField()
+{% endblock %}

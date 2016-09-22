@@ -39,9 +39,10 @@ class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
     hometown = CharField()
+    email = CharField(null=True, unique=False)
     application_code = CharField(null=True)
     status = CharField()
-    closest_school = ForeignKeyField(School, null=True)
+    closest_school = ForeignKeyField(School, null=True, related_name='suli')
     application_time = DateField()
 
     def get_closest_school_id(self):
