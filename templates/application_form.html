@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Application</title>
-    <meta charset=iso-8858-2>
-</head>
+{% extends "base.html" %}
+{% block body %}
+
 <body bgcolor="#E6E6FA">
-    <h1>Registration Form</h1>
+    <center><h1>Registration Form</h1>
 
     <form action="{{url_for('registration')}}" method="post">
 
     <p><label>First name</label></p>
-        <input type="text" name="first_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your first name">
+        <input type="text" class="body forms" name="first_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your first name">
     <p><label>Last name</label></p>
-        <input type="text" name="last_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your last name">
+        <input type="text" class="body forms" name="last_name" required pattern="[charset=iso-8858-2]{1,10}" title="Enter your last name">
     <p><label>Hometown</label></p>
-        <input type="text" name="hometown" required pattern="[charset=iso-8858-2]{1,20}" title="Enter your hometown">
+        <input type="text" class="body forms" name="hometown" required pattern="[charset=iso-8858-2]{1,20}" title="Enter your hometown">
     <p><label>E-mail</label></p>
-        <input type="email" name="email" required placeholder="example@example.com" title="Enter a valid email address!">
-
-    <p><input type="submit" value="Submit"></p>
+        <input type="email" class="body forms" name="email" required placeholder="example@example.com" title="Enter a valid email address!">
+    </>
+    <br><br><p><strong><input type="submit" value="Submit"></strong></p>
     </form>
-</body>
-</html>
+    </center>
+    {% endblock %}
