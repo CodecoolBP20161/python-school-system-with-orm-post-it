@@ -12,11 +12,14 @@ db.connect()
 @app.route('/')
 def main_page():
     # return redirect(url_for('list_applicants'))
-    return render_template('login_page.html')
+    return render_template('home_page.html')
 
 
-@app.route('/login', methods=['POST'])
+
+@app.route('/applicant/login/', methods=['GET', 'POST'])
 def login():
+    if request.method == 'GET':
+        return render_template('login_page.html')
     try:
         login_applicant = Applicant.get(Applicant.email == request.form["username"])
 
@@ -29,6 +32,12 @@ def login():
                 return "Invalid username/password combination"
     except:
         return "Wrong e-mail address, please sign up!"
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('main_page'))
 
 
 @app.route('/registration/', methods=['POST', 'GET'])
