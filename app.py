@@ -55,7 +55,7 @@ def registration():
         new_applicant.save()
         Applicant.assign_app_code()
         Applicant.assign_school()
-        return render_template('supriseboda.html')
+        return redirect(url_for("main_page"))
     return render_template('application_form.html')
 
 # @app.route('/successful/')

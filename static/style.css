@@ -24,7 +24,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #fff;
+    background-color: white;
 }
 li {
     font-size: 150%;
@@ -73,4 +73,19 @@ li:last-child {
 }
 .carousel-caption p{
   font-size: 3.3em;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: white;
+    border: none;
+    color: #337ab7;
+    padding: 18px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.forms {
+    color: black
+}
+.black {
+    color:#4f9ac4;
 }
