@@ -16,7 +16,7 @@ def main_page():
 
 
 
-@app.route('/applicant/login/', methods=['GET','POST'])
+@app.route('/applicant/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('login_page.html')
@@ -37,7 +37,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('home_page'))
+    return redirect(url_for('main_page'))
 
 
 @app.route('/registration/', methods=['POST', 'GET'])
